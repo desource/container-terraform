@@ -13,7 +13,7 @@ build() {
   cd ${GOPATH}/src/github.com/hashicorp/terraform
   
   echo "Build Terraform"
-  make bin XC_OS="linux darwin" XC_ARCH="amd64"
+  make bin XC_OS="linux" XC_ARCH="amd64"
   
   cp -r pkg ${out}/pkg
 }
@@ -28,7 +28,7 @@ EOF
   cat <<EOF | tee > ${out}/Dockerfile
 FROM alpine:3.4
 
-RUN apk --no-cache add git
+RUN apk --no-cache add git zip
 
 ADD pkg/linux_amd64/terraform /bin/terraform
 
