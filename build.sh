@@ -7,6 +7,8 @@ out=${PWD}/out
 export GOPATH=${PWD}/go
 export PATH=${GOPATH}/bin:${PATH}
 
+apk --no-cache add zip bash git make
+
 build() {
   mkdir -p ${out}/bin ${out}/tmp
   
@@ -28,7 +30,7 @@ EOF
   cat <<EOF | tee > ${out}/Dockerfile
 FROM alpine:3.4
 
-RUN apk --no-cache add git zip
+RUN apk --no-cache add git
 
 ADD pkg/linux_amd64/terraform /bin/terraform
 
