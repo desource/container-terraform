@@ -43,7 +43,7 @@ EOF
 
 tarball() {
   echo "Creating ${out}/terraform-linux-amd64.tgz"
-  tar czf ${out}/terraform-linux-amd64.tgz -C ${out}/pkg/linux_amd64/
+  tar czf ${out}/terraform-linux-amd64.tgz -C ${out}/pkg/linux_amd64/ terraform
 }
 
 build
