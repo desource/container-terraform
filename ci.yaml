@@ -19,6 +19,17 @@ jobs:
         file: out/terraform-linux-amd64.tgz
         acl: public-read
 
+- name: release-terraform
+  plan:
+  - get: docker
+    passed: [terraform]
+    params:
+      save: true
+  - put: docker
+    params:
+      load: docker
+      tag_as_latest: true
+
 resources:
 - name: src
   type: git
