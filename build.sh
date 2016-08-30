@@ -1,5 +1,5 @@
 #!/bin/sh
-set -euo pipefail
+set -eu
 
 version=${version:-hmrc-dev}
 out=${PWD}/out
