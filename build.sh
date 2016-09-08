@@ -30,7 +30,7 @@ dockerfile() {
   cat <<EOF | tee > ${out}/Dockerfile
 FROM alpine:3.4
 
-RUN apk --no-cache add git
+RUN apk --no-cache add git graphviz font-bitstream-type1
 
 ADD pkg/linux_amd64/terraform /bin/terraform
 
