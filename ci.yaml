@@ -14,6 +14,14 @@ jobs:
       params:
         build: out
         tag:   out/version
+    - put: s3-linux
+      params:
+        file: out/terraform-linux-amd64.tgz
+        acl: public-read
+    - put: s3-darwin
+      params:
+        file: out/terraform-darwin-amd64.tgz
+        acl: public-read
 
 - name: release-terraform
   plan:
@@ -44,3 +52,21 @@ resources:
     repository: quay.io/hmrc/terraform
     username: {{quay-io-username}}
     password: {{quay-io-password}}
+
+- name: s3-linux
+  type: s3
+  source:
+    bucket: hmrc-terraform-builds
+    versioned_file: terraform-linux-amd64.tgz
+    access_key_id: {{s3-access-key}}
+    secret_access_key: {{s3-secret-key}}
+    region_name: eu-west-1
+
+- name: s3-darwin
+  type: s3
+  source:
+    bucket: hmrc-terraform-builds
+    versioned_file: terraform-linux-amd64.tgz
+    access_key_id: {{s3-access-key}}
+    secret_access_key: {{s3-secret-key}}
+    region_name: eu-west-1
