@@ -20,7 +20,7 @@ ${version}
 EOF
 
   echo "Build terraform ${version}"
-  make bin XC_OS="linux" XC_ARCH="amd64"
+  make bin XC_OS="linux darwin" XC_ARCH="amd64"
 
   cp -r pkg ${out}/pkg
 }
